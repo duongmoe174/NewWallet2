@@ -1,0 +1,33 @@
+use walletmanagement;
+
+-- Thêm dữ liệu vào table USER
+insert into user (name_user, password)
+VALUES ('admin', 'admin');
+
+-- Thêm dữ liệu vào table WALLET
+insert into wallet(name_wallet, id_currency, id_user, current_amount)
+VALUES ('Cash', 1, 1, 1000000.0);
+insert into wallet(name_wallet, id_currency, id_user, current_amount)
+VALUES ('Techcombank', 1, 1, 1500000.0);
+insert into wallet(name_wallet, id_currency, id_user, current_amount)
+VALUES ('Bank of America', 2, 1, 3000.0);
+
+-- Thêm dữ liệu vào table CURRENCY
+insert into currency(name_currency)
+values ('VND');
+insert into currency(name_currency)
+values ('USD');
+
+-- Thêm dữ liệu vào table CATEGORY
+# insert into category(name)
+# values ('food');
+
+
+-- Thêm dữ liệu vào table TRANSACTION
+-- Income: Thu; Expense: Chi
+insert into transaction(name_transaction)
+values ('Income');
+insert into transaction(name_transaction)
+values ('Expense');
+
+-- Thêm dữ liệu vào TRANSACTION DETAIL

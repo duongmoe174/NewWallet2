@@ -2,7 +2,7 @@
 .gradle
 /build/
 
-# Ignore Gradle GUI config
+# Ignore Gradle GUI com.team4.config
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
@@ -106,4 +106,4 @@ Temporary Items
 .apdisk
 
 #ignore connection
-src/main/java/com/team4/config/SingletonConnection.java
+src/main/java/com/team4/com.team4.config/SingletonConnection.java

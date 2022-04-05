@@ -1,0 +1,59 @@
+create database WalletManagement;
+use WalletManagement;
+
+-- Tạo bảng người dùng
+create table user
+(
+    id_user   int primary key auto_increment,
+    name_user varchar(50),
+    password  varchar(50)
+);
+
+-- Tạo bảng loại tiền tệ; vd: VND hoặc USD
+create table currency
+(
+    id_currency   int primary key auto_increment,
+    name_currency varchar(50)
+);
+
+-- Tạo bảng ví tiền
+create table wallet
+(
+    id_wallet      int primary key auto_increment,
+    name_wallet    varchar(50), -- Tiền mặt hoặc tài khoản
+    id_currency    int,
+    id_user        int,
+    current_amount double,      -- Số tiền trong ví
+    foreign key (id_currency) references currency (id_currency),
+    foreign key (id_user) references user (id_user)
+);
+
+-- Tạo bảng danh mục; vd: ăn uống, lương, thưởng, vay, cho vay etc.
+create table category
+(
+    id_category   int primary key auto_increment,
+    name_category varchar(50)
+);
+
+-- Tạo bảng giao dịch; vd: thu, chi
+create table transaction
+(
+    id_transaction   int primary key auto_increment,
+    name_transaction varchar(50)
+);
+
+-- Tạo bảng chi tiết giao dịch;
+create table transaction_detail
+(
+    id_detail        int primary key auto_increment,
+    amount_money     double,        -- Tổng số tiền giao dịch
+    date_transaction date,          -- Ngày giao dịch
+    id_transaction   int,
+    id_category      int,
+    id_wallet        int,
+    notes            nvarchar(100), -- Ghi chú giao dịch
+    foreign key (id_transaction) references transaction (id_transaction),
+    foreign key (id_category) references category (id_category),
+    foreign key (id_wallet) references wallet (id_wallet)
+);
+
