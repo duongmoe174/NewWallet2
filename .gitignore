@@ -106,4 +106,4 @@ Temporary Items
 .apdisk
 
 #ignore connection
-src/main/java/com/team4/com.team4.config/SingletonConnection.java
+src/main/java/com/team4/config/SingletonConnection.java

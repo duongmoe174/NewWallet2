@@ -1,4 +1,8 @@
 package com.team4.service.user;
 
-public interface IUserService {
+import com.team4.model.User;
+import com.team4.service.IService;
+
+public interface IUserService extends IService<User> {
+
 }
