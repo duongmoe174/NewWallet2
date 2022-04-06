@@ -19,6 +19,20 @@
 <div>
     <table>
         <caption><h2>List of wallet</h2></caption>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Description</th>
+        </tr>
+        <c:forEach var="wallets" items="${wallets}">
+            <tr>
+                <td><c:out value="${wallets.id}"/></td>
+                <td><c:out value="${wallets.name}"/></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 </body>

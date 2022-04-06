@@ -7,9 +7,23 @@ import java.sql.Connection;
 public class Wallet {
     private int id_wallet;
     private String name_wallet;
+    private double balance;
     private String description;
 
     public Wallet() {
+    }
+
+    public Wallet(int id_wallet, String name_wallet, double balance, String description) {
+        this.id_wallet = id_wallet;
+        this.name_wallet = name_wallet;
+        this.balance = balance;
+        this.description = description;
+    }
+
+    public Wallet(String name_wallet, double balance, String description) {
+        this.name_wallet = name_wallet;
+        this.balance = balance;
+        this.description = description;
     }
 
     public Wallet(int id_wallet, String name_wallet, String description) {
@@ -21,6 +35,14 @@ public class Wallet {
     public Wallet(String name_wallet, String description) {
         this.name_wallet = name_wallet;
         this.description = description;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public int getId_wallet() {
