@@ -1,0 +1,4 @@
+use WalletManagement;
+-- Sửa table WALLET
+alter table wallet
+    add description nvarchar(100);
