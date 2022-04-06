@@ -25,6 +25,11 @@ public class UserServlet extends HttpServlet {
             case "create":
                 showCreateUserForm(request, response);
                 break;
+            case "login":
+                loginForm(request,response);
+            case "logout":
+                logoutUer(request,response);
+                break;
             default:
                 listUser(request,response);
                 break;
@@ -40,6 +45,9 @@ public class UserServlet extends HttpServlet {
         switch (action) {
             case "create":
                 createUser(request, response);
+                break;
+            case "login":
+                loginUser(request,response);
                 break;
         }
     }
@@ -70,7 +78,30 @@ public class UserServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
-    private void welcomeUser (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void loginForm (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/login.jsp");
+        requestDispatcher.forward(request,response);
+    }
 
+    private void loginUser (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("login_name");
+        String password = request.getParameter("login_password");
+        boolean isValid = userService.checkLogin(username, password);
+        if (isValid) {
+            HttpSession session = request.getSession();
+            session.setAttribute("loginuser", username);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("welcome.jsp");
+            requestDispatcher.forward(request,response);
+        }
+        else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request,response);
+        }
+    }
+    private void logoutUer (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        requestDispatcher.forward(request,response);
     }
 }
