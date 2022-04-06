@@ -30,6 +30,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Login"/>
+                    <a href="users?action=create"><input type="button" value="Sign up"/></a>
                 </td>
             </tr>
         </table>

@@ -8,8 +8,12 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
+
+import static java.lang.System.out;
 
 @WebServlet(name = "UserServlet", value = "/users")
 public class UserServlet extends HttpServlet {
@@ -58,12 +62,22 @@ public class UserServlet extends HttpServlet {
     }
 
     private void createUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        User user = new User(name, password);
-        userService.insert(user);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        String re_password = request.getParameter("re_password");
+        if(Objects.equals(password, re_password)) {
+            User user = new User(name, password);
+            userService.insert(user);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
+      else {
+             out.print("Sorry so much dude!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
+            dispatcher.forward(request, response);
+        }
+      out.close();
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -84,6 +98,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void loginUser (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String username = request.getParameter("login_name");
         String password = request.getParameter("login_password");
         boolean isValid = userService.checkLogin(username, password);
@@ -94,9 +109,11 @@ public class UserServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }
         else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request,response);
+            out.print("<p style=\"color:red\">Sorry username or password error</p>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
+            dispatcher.include(request,response);
         }
+        out.close();
     }
     private void logoutUer (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
