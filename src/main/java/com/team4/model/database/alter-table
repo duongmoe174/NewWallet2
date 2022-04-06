@@ -2,4 +2,6 @@ use WalletManagement;
 -- Sửa table WALLET
 alter table wallet
     add description nvarchar(100);
-ALTER TABLE category ADD note VARCHAR(100);
+-- Sửa table CATEGORY
+ALTER TABLE category
+    ADD note VARCHAR(100);

@@ -24,6 +24,7 @@
             <th>Name</th>
             <th>Balance</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
         <c:forEach var="wallet" items="${wallets}">
             <tr>
@@ -31,6 +32,10 @@
                 <td><c:out value="${wallet.name_wallet}"/></td>
                 <td><c:out value="${wallet.balance}"/></td>
                 <td><c:out value="${wallet.description}"/></td>
+                <td>
+                    <a href="wallets?action=edit">Edit</a>
+                    <a href="wallets?action=delete">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
