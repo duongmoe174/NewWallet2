@@ -3,6 +3,7 @@ package com.team4.model;
 public class User {
     private int id;
     private String name;
+    private String password;
 
     public User(int id, String name) {
         this.id = id;
@@ -30,6 +31,25 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User(int id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

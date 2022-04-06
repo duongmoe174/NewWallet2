@@ -14,11 +14,8 @@
 </head>
 <body>
 <center>
+    <h1></h1>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Login</button>
-        <a href="users?action=create">
-            <button type="button" class="btn btn-primary">Sign Up</button>
-        </a>
         <a href="index.jsp"><button type="button" class="btn btn-primary">Check out</button></a>
     </div>
 </center>

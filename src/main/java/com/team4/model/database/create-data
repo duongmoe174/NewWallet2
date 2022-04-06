@@ -56,4 +56,44 @@ create table transaction_detail
     foreign key (id_category) references category (id_category),
     foreign key (id_wallet) references wallet (id_wallet)
 );
+DELIMITER //
+create procedure selectAllUser ()
+begin
+    select * from  user;
+end;
+DELIMITER ;
 
+DELIMITER //
+create procedure insertNewUser (
+IN u_name varchar(50),
+IN u_password  varchar(50)
+)
+begin
+    insert into user (name_user, password) VALUES (u_name, u_password);
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure getUserById (IN u_id int)
+begin
+select name_user from user where id_user = u_id;
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure deleteUserById (IN u_id int)
+begin
+delete from user where id_user = u_id;
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure updateUser (
+IN u_id int,
+IN u_name varchar(50),
+IN u_password varchar(50)
+)
+begin
+update user set name_user = u_name, password = u_password where id_user = u_id;
+end //
+DELIMITER ;
