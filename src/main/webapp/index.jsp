@@ -14,12 +14,12 @@
 </head>
 <body>
 <center>
+    <h2>WELCOME TO INCOME/EXPEND MANAGEMENT</h2>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Login</button>
+        <a href="users?action=login"><button type="button" class="btn btn-primary">Login</button></a>
         <a href="users?action=create">
             <button type="button" class="btn btn-primary">Sign Up</button>
         </a>
-        <a href="index.jsp"><button type="button" class="btn btn-primary">Check out</button></a>
     </div>
 </center>
 

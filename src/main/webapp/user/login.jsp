@@ -6,7 +6,8 @@
 </head>
 <body>
 <center>
-    <h1>Create New Account</h1>
+    <h1>LOGIN</h1>
+    <h2><a href="users?action=users"></a></h2>
 </center>
 <div align="center">
     <form action="" method="post">
@@ -17,18 +18,18 @@
             <tr>
                 <th>Account name</th>
                 <td>
-                    <input type="text" name="name", id="name", size="50"/>
+                    <input type="text" name="login_name", id="name", size="50"/>
                 </td>
             </tr>
             <tr>
                 <th>Account password</th>
                 <td>
-                    <input type="password" name="password" id="password" size="50"/>
+                    <input type="password" name="login_password" id="password" size="50"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Sign up"/>
+                    <input type="submit" value="Login"/>
                 </td>
             </tr>
         </table>

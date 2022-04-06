@@ -83,4 +83,22 @@ public class UserService implements IUserService {
         }
         return rowUpdate;
     }
+
+    @Override
+    public boolean checkLogin (String username, String password) {
+        boolean isValid = false;
+        String query = "{CALL selectUserForLogin(?,?)}";
+        try (CallableStatement callableStatement = connection.prepareCall(query)) {
+            callableStatement.setString(1, username);
+            callableStatement.setString(2, password);
+            ResultSet resultSet = callableStatement.executeQuery();
+            if (resultSet.next()) {
+                isValid = true;
+            } else
+                isValid = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isValid;
+    }
 }
