@@ -25,12 +25,12 @@
             <th>Balance</th>
             <th>Description</th>
         </tr>
-        <c:forEach var="wallets" items="${wallets}">
+        <c:forEach var="wallet" items="${wallets}">
             <tr>
-                <td><c:out value="${wallets.id}"/></td>
-                <td><c:out value="${wallets.name}"/></td>
-                <td></td>
-                <td></td>
+                <td><c:out value="${wallet.id_wallet}"/></td>
+                <td><c:out value="${wallet.name_wallet}"/></td>
+                <td><c:out value="${wallet.balance}"/></td>
+                <td><c:out value="${wallet.description}"/></td>
             </tr>
         </c:forEach>
     </table>
