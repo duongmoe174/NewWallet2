@@ -1,0 +1,4 @@
+use WalletManagement;
+
+select id_wallet, name_wallet, current_amount, description
+from wallet;
