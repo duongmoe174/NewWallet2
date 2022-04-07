@@ -8,8 +8,12 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
+
+import static java.lang.System.out;
 
 @WebServlet(name = "UserServlet", value = "/users")
 public class UserServlet extends HttpServlet {
@@ -60,10 +64,27 @@ public class UserServlet extends HttpServlet {
     private void createUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        User user = new User(name, password);
-        userService.insert(user);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        String re_password = request.getParameter("re_password");
+        if(Objects.equals(password, re_password)) {
+            User user = new User(name, password);
+            this.userService.insert(user);
+            request.setAttribute("message", "<span style=\"color: green\">New user was created!<span>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+      else {
+            request.setAttribute("message", "<span style=\"color: red\">Password not match!<span>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -94,8 +115,13 @@ public class UserServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }
         else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request,response);
+            request.setAttribute("message", "<span style=\"color: red\">Wrong username or password<span>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     private void logoutUer (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -7,6 +7,9 @@
 <body>
 <center>
     <h1>LOGIN</h1>
+    <c:if test='${requestScope["message"] != null}'>
+        <span class="message">${message}</span>
+    </c:if>
     <h2><a href="users?action=users"></a></h2>
 </center>
 <div align="center">
@@ -30,6 +33,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Login"/>
+                    <a href="users?action=create"><input type="button" value="Sign up"/></a>
                 </td>
             </tr>
         </table>
