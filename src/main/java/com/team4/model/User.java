@@ -42,7 +42,7 @@ public class User {
         this.name = name;
         this.password = password;
     }
-//hihi
+//hihihihihi
     public User(String name, String password) {
         this.name = name;
         this.password = password;
