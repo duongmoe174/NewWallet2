@@ -12,6 +12,7 @@
             <span class="message">${message}</span>
         </c:if>
     </p>
+    <a href="users?action=login"><button>Login</button></a>
 </center>
 <div align="center">
     <form action="" method="post">

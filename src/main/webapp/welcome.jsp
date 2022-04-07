@@ -22,6 +22,8 @@
     <br>
     <br>
     <a href="users?action=logout"><button>CHECK VAN OUT</button></a>
+    <a href="wallets?action=create"><button>Create new wallet</button></a>
+    <a href="#"><button>Show my wallet</button></a>
 </center>
 
 </body>
