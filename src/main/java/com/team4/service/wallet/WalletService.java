@@ -16,7 +16,6 @@ public class WalletService implements IWalletService {
     private static final String INSERT_USERS_SQL = "insert into wallet(name_wallet,current_amount, description) values (?,?,?)";
 
     @Override
-
     public List<Wallet> selectAll() {
         List<Wallet> wallets = new ArrayList<>();
         try (Connection connection = SingletonConnection.getConnect();

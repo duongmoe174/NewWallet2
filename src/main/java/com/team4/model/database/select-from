@@ -2,3 +2,11 @@ use WalletManagement;
 
 select id_wallet, name_wallet, current_amount, description
 from wallet;
+
+select id_currency, name_currency
+from currency;
+
+select currency.id_currency, name_currency, u.id_user, name_user
+from currency
+         join wallet w on currency.id_currency = w.id_currency
+         join user u on u.id_user = w.id_user;

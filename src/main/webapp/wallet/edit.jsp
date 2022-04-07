@@ -12,6 +12,11 @@
     <title>Edit Wallet</title>
 </head>
 <body>
+<h2>
+    <a href="wallets?action=wallets">Back to list of wallets</a>
+</h2>
+<div>
 
+</div>
 </body>
 </html>

@@ -33,9 +33,9 @@
                 <th>Id_Currency</th>
                 <td>
                     <label for="currency"></label>
-                    <select name="currency" id="currency">
-                        <c:forEach var="currency" items="${}">
-
+                    <select name="currencies" id="currency">
+                        <c:forEach var="currency" items="${currencies}">
+                            <option value="${currency.getId()}">${currency.getName()}</option>
                         </c:forEach>
                     </select>
                 </td>
@@ -62,7 +62,7 @@
                 <th>Description</th>
                 <td>
                     <label for="description"></label>
-                    <input type="text" name="description" id="description" placeholder="Số tiền hiện tại" size="50"/>
+                    <input type="text" name="description" id="description" placeholder="Mô tả" size="50"/>
                 </td>
             </tr>
             <tr>
