@@ -7,6 +7,11 @@
 <body>
 <center>
     <h1>Create New Account</h1>
+    <p>
+        <c:if test='${requestScope["message"] != null}'>
+            <span class="message">${message}</span>
+        </c:if>
+    </p>
 </center>
 <div align="center">
     <form action="" method="post">
@@ -17,19 +22,19 @@
             <tr>
                 <th>Account name</th>
                 <td>
-                    <input type="text" name="name", id="name", size="50"/>
+                    <input type="text" name="name", id="name", size="50" required/>
                 </td>
             </tr>
             <tr>
                 <th>Account password</th>
                 <td>
-                    <input type="password" name="password" id="password" size="50" placeholder="password"/>
+                    <input type="password" name="password" id="password" size="50" placeholder="password" required/>
                 </td>
             </tr>
             <tr>
                 <th>Confirm password</th>
                 <td>
-                    <input type="password" name="re_password" id="re_password" placeholder="confirm password" size="50" />
+                    <input type="password" name="re_password" id="re_password" placeholder="confirm password" size="50" required/>
                     <p id="message"></p>
                 </td>
             </tr>

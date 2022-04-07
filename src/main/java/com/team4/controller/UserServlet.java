@@ -62,22 +62,29 @@ public class UserServlet extends HttpServlet {
     }
 
     private void createUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String re_password = request.getParameter("re_password");
         if(Objects.equals(password, re_password)) {
             User user = new User(name, password);
-            userService.insert(user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            this.userService.insert(user);
+            request.setAttribute("message", "<span style=\"color: green\">New user was created!<span>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
         }
       else {
-             out.print("Sorry so much dude!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
-            dispatcher.forward(request, response);
+            request.setAttribute("message", "<span style=\"color: red\">Password not match!<span>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
         }
-      out.close();
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -98,7 +105,6 @@ public class UserServlet extends HttpServlet {
     }
 
     private void loginUser (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         String username = request.getParameter("login_name");
         String password = request.getParameter("login_password");
         boolean isValid = userService.checkLogin(username, password);
@@ -109,11 +115,14 @@ public class UserServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }
         else {
-            out.print("<p style=\"color:red\">Sorry username or password error</p>");
+            request.setAttribute("message", "<span style=\"color: red\">Wrong username or password<span>");
             RequestDispatcher dispatcher = request.getRequestDispatcher("user/login.jsp");
-            dispatcher.include(request,response);
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
         }
-        out.close();
     }
     private void logoutUer (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

@@ -7,6 +7,9 @@
 <body>
 <center>
     <h1>LOGIN</h1>
+    <c:if test='${requestScope["message"] != null}'>
+        <span class="message">${message}</span>
+    </c:if>
     <h2><a href="users?action=users"></a></h2>
 </center>
 <div align="center">
