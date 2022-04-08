@@ -15,15 +15,24 @@
 </head>
 <body>
 <center>
-<%
-    String username = (String) session.getAttribute("loginuser");
-    out.println("<h2>Welcome</h2>" + username);
-%>
+    <%
+        String username = (String) session.getAttribute("loginuser");
+        out.println("<h2>Welcome</h2>" + username);
+    %>
     <br>
     <br>
-    <a href="users?action=logout"><button>CHECK VAN OUT</button></a>
-    <a href="wallets?action=create"><button>Create new wallet</button></a>
-    <a href="wallets?action=wallets"><button>Show my wallet</button></a>
+    <a href="users?action=logout">
+        <button>CHECK VAN OUT</button>
+    </a>
+    <a href="wallets?action=create">
+        <button>Create new wallet</button>
+    </a>
+    <a href="wallets?action=wallets">
+        <button>Show my wallet</button>
+    </a>
+    <a href="Catalog?action=Catalog">
+        <button>Show Catalog</button>
+    </a>
 </center>
 
 </body>
