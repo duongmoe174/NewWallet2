@@ -37,8 +37,6 @@ public class WalletServlet extends HttpServlet {
             case "create":
                 showNewForm(request, response);
                 break;
-            default:
-                listWallet(request, response);
         }
     }
 
