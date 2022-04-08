@@ -13,7 +13,6 @@ public interface ICategoryService {
     public List<Category> selectAllCategory();
 
 
-
     public boolean deleteCategory(int id) throws SQLException;
 
     public boolean updateCategory(Category category) throws SQLException;

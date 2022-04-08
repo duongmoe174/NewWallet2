@@ -1,6 +1,5 @@
 package com.team4.service.catalog;
 
-import java.sql.*;
 import com.team4.config.SingletonConnection;
 import com.team4.model.Category;
 
