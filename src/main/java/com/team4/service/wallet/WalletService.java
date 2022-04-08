@@ -16,6 +16,30 @@ public class WalletService implements IWalletService {
     Connection connection = SingletonConnection.getConnect();
 
     @Override
+    public List<Wallet> selectAllWalletById(int idUser) {
+        List<Wallet> wallets = new ArrayList<>();
+        String query = "{CALL selectAllWalletById(?)}";
+        try (CallableStatement callableStatement = connection.prepareCall(query)) {
+            callableStatement.setInt(1, idUser);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                String nameWallet = resultSet.getString("name_wallet");
+                double amount = resultSet.getDouble("current_amount");
+                String currency = resultSet.getString("name_currency");
+                String nameUser = resultSet.getString("name_user");
+                CurrencyWallet currencyWallet = new CurrencyWallet(currency);
+                User user = new User(nameUser);
+                Wallet wallet = new Wallet(nameWallet, amount, user, currencyWallet);
+                wallets.add(wallet);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return wallets;
+    }
+
+    @Override
     public List<Wallet> selectAll() {
         List<Wallet> wallets = new ArrayList<>();
         String query = "{CALL selectAllWallet()}";

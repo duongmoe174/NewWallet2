@@ -24,7 +24,7 @@ create table wallet
     id_currency    int,
     id_user        int,
     current_amount double,      -- Số tiền trong ví
-    description varchar(100),
+    description    varchar(100),
     foreign key (id_currency) references currency (id_currency),
     foreign key (id_user) references user (id_user)
 );
@@ -130,8 +130,8 @@ begin
            w.description    as wallet_description,
            w.id_user        as id_user,
            w.id_currency    as id_currency,
-           c.name_currency as name_currency,
-           u.name_user as name_user
+           c.name_currency  as name_currency,
+           u.name_user      as name_user
     from wallet w
              join walletmanagement.currency c on c.id_currency = w.id_currency
              join user u on w.id_user = u.id_user;
@@ -140,20 +140,42 @@ DELIMITER ;
 
 DELIMITER //
 create procedure insertNewWallet(
-IN name varchar(50),
-IN cur_id int,
-IN u_id int,
-IN amount double,
-IN w_description varchar(100)
+    IN name varchar(50),
+    IN cur_id int,
+    IN u_id int,
+    IN amount double,
+    IN w_description varchar(100)
 )
 begin
-insert into wallet(name_wallet, id_currency, id_user, current_amount, description) VALUES (name, cur_id, u_id, amount, w_description);
+    insert into wallet(name_wallet, id_currency, id_user, current_amount, description)
+    VALUES (name, cur_id, u_id, amount, w_description);
 end //;
 DELIMITER ;
 
 DELIMITER //
-create procedure getUserIdByName (IN u_name varchar(50))
+create procedure getUserIdByName(IN u_name varchar(50))
 begin
     select id_user from user where name_user = u_name;
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure selectAllWalletById(IN u_id int)
+begin
+    select w.name_wallet    as name_wallet,
+           w.current_amount as current_amount,
+           c.name_currency  as name_currency,
+           u.name_user      as name_user
+    from wallet w
+             join walletmanagement.currency c on c.id_currency = w.id_currency
+             join user u on w.id_user = u.id_user
+    where u.id_user = u_id;
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure getNameUserById (IN id_u int)
+begin
+    select name_user from user where id_user = id_u;
 end //
 DELIMITER ;

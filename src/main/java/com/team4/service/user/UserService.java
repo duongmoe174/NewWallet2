@@ -117,4 +117,20 @@ public class UserService implements IUserService {
         }
         return idUser;
     }
+
+    @Override
+    public String getUserNameById(int idUser) {
+        String nameUser = null;
+        String query = "{CALL getUserIdByName(?)}";
+        try (CallableStatement callableStatement = connection.prepareCall(query)) {
+            callableStatement.setInt(1, idUser);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                nameUser = resultSet.getString("name_user");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nameUser;
+    }
 }

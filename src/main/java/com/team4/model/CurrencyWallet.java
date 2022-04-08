@@ -12,6 +12,10 @@ public class CurrencyWallet {
         this.name = name;
     }
 
+    public CurrencyWallet(String name) {
+        this.name = name;
+    }
+
     public CurrencyWallet(int id) {
         this.id = id;
     }
