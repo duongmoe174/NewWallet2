@@ -38,7 +38,7 @@ public class WalletServlet extends HttpServlet {
                 showNewForm(request, response);
                 break;
             default:
-                listWallet(request, response);
+                listWallet(request, response); //a du
         }
     }
 
