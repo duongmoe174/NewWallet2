@@ -6,4 +6,5 @@ import com.team4.service.IService;
 public interface IUserService extends IService<User> {
 boolean checkLogin (String username, String password);
 int getUserIdByName (String username);
+String getUserNameById (int idUser);
 }

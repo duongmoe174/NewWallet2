@@ -17,7 +17,7 @@
 <center>
     <h1>Catalog Management</h1>
     <h2>
-        <a href="/Catalog?action=create">Add New User</a>
+      <button><a href="/Catalog?action=create">Add New Catalog</a></button>
     </h2>
     <%--    <h2>--%>
     <%--        <a href="/Catalog?action=search">Search</a>--%>

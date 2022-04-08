@@ -16,7 +16,7 @@
 <center>
     <h1>Catalog Management</h1>
     <h2>
-        <a href="/Catalog?action=Catalog">List All Users</a>
+       <button name="List All Catalog" ><a href="/Catalog?action=Catalog">List All Catalog</a></button>
     </h2>
 </center>
 <div align="center">

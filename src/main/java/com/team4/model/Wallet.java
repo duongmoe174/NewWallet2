@@ -23,6 +23,13 @@ public class Wallet {
         this.currencyWallet = currencyWallet;
     }
 
+    public Wallet(String name, double balance, User user, CurrencyWallet currencyWallet) {
+        this.name = name;
+        this.balance = balance;
+        this.user = user;
+        this.currencyWallet = currencyWallet;
+    }
+
     public Wallet(int id, String name, double balance, String description, User user, CurrencyWallet currencyWallet) {
         this.id = id;
         this.name = name;

@@ -61,7 +61,10 @@ public class WalletServlet extends HttpServlet {
     }
 
     private void listWallet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Wallet> wallets = walletService.selectAll();
+        HttpSession session = request.getSession();
+        String nameUser = (String) session.getAttribute("loginuser");
+        int idUser = userService.getUserIdByName(nameUser);
+        List<Wallet> wallets = walletService.selectAllWalletById(idUser);
         request.setAttribute("wallets", wallets);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/list.jsp");
         requestDispatcher.forward(request, response);
