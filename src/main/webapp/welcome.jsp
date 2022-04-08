@@ -33,6 +33,9 @@
     <a href="Catalog?action=Catalog">
         <button>Show Catalog</button>
     </a>
+    <a href="transactiondetail">
+        <button>Transaction Detail</button>
+    </a>
 </center>
 
 </body>

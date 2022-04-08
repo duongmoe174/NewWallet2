@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/wallet/create.jsp" value="file://$PROJECT_DIR$/src/main/webapp/wallet" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/wallet/list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/wallet" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>
