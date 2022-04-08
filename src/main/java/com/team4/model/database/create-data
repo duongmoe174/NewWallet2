@@ -1,5 +1,5 @@
-create database WalletManagement;
-use WalletManagement;
+create database walletmanagement;
+use walletmanagement;
 
 -- Tạo bảng người dùng
 create table user
@@ -24,10 +24,10 @@ create table wallet
     id_currency    int,
     id_user        int,
     current_amount double,      -- Số tiền trong ví
+    description varchar(100),
     foreign key (id_currency) references currency (id_currency),
     foreign key (id_user) references user (id_user)
 );
-
 -- Tạo bảng danh mục; vd: ăn uống, lương, thưởng, vay, cho vay etc.
 create table category
 (
@@ -139,17 +139,16 @@ end //
 DELIMITER ;
 
 DELIMITER //
-create procedure insertNewWallet (
-IN wallet_name varchar(50),
-IN wallet_amount double,
-IN wallet_description varchar(50),
+create procedure insertNewWallet(
+IN name varchar(50),
 IN cur_id int,
-IN user_id int
+IN u_id int,
+IN amount double,
+IN w_description varchar(100)
 )
 begin
-    insert into wallet (name_wallet, id_currency, id_user, current_amount, description)
-    values (wallet_name, cur_id, user_id, wallet_amount, wallet_description);
-end //
+insert into wallet(name_wallet, id_currency, id_user, current_amount, description) VALUES (name, cur_id, u_id, amount, w_description);
+end //;
 DELIMITER ;
 
 DELIMITER //

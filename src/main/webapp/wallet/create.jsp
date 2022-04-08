@@ -61,6 +61,7 @@
             </tr>
         </table>
     </form>
+    <a href="../welcome.jsp"><button>Back</button></a>
 </div>
 </body>
 </html>
