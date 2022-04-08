@@ -5,10 +5,7 @@ import com.team4.model.CurrencyWallet;
 import com.team4.model.User;
 import com.team4.model.Wallet;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +79,19 @@ public class WalletService implements IWalletService {
 
     @Override
     public Wallet getById(int id) {
-        return null;
+        Wallet wallet = null;
+        try (Connection connection = SingletonConnection.getConnect();
+             PreparedStatement preparedStatement = connection.prepareStatement("select id_wallet, name_wallet from wallet where id_wallet = ?;")) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name_wallet");
+                wallet = new Wallet(id, name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return wallet;
     }
 
     @Override

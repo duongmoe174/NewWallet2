@@ -15,6 +15,11 @@ public class Wallet {
     public Wallet() {
     }
 
+    public Wallet(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Wallet(String name, double balance, String description, User user, CurrencyWallet currencyWallet) {
         this.name = name;
         this.balance = balance;
